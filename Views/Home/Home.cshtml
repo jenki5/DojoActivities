@@ -1,0 +1,43 @@
+<partial name="NavPartials"/>
+<h1 class="header">Dojo Activity Center</h1>
+<p class="header">Welcome, Mike!</p>
+<a href="/logout" class="header logout">Logout</a>
+@model List<Activity>
+<div class="container">
+    <table class="table table-striped">
+        <tr>
+            <th>Activity</th>
+            <th>Date and Time</th>
+            <th>Duration</th>
+            <th>Event Coordinator</th>
+            <th>No. of Participants</th>
+            <th>Actions</th>
+        </tr>
+        @foreach(var activity in Model)
+        {
+            <tr>
+                <td><a href="/activity/@activity.ActivityId">@activity.Name</a></td>
+                <td>@activity.Date</td>
+                <td>@activity.Duration @activity.Measure</td>
+                <td>@activity.Creator.Name</td>
+                <td>@activity.Attendees.Count</td>
+                @if(ViewBag.UserId == activity.Creator.UserId)
+                {
+                    <td><a href="/DeleteActivity/@activity.ActivityId">Delete</a></td>
+                }
+                else if(activity.Attendees.Any(c => c.UserId == ViewBag.UserId))
+                {
+                    <td><a href="/LeaveActivity/@activity.ActivityId">Leave</a></td>
+                }
+                else
+                {
+                    <td><a href="/JoinActivity/@activity.ActivityId">Join</a></td>                    
+                }
+            </tr>
+        }
+    </table>
+
+    <form action="/newactivity">
+        <input type="submit" value="Add New Activity!" class="btn btn-primary">
+    </form>
+</div>

@@ -1,0 +1,34 @@
+﻿<partial name="NavPartials"/>
+<div class="container">
+    <div class="register">
+        @model LoginClass
+        <h1>Register</h1>
+        <form asp-action="CreateUser" asp-controller="Home" method="post">
+            <span asp-validation-for="RegisterUser.Name"></span>
+            <label asp-for="RegisterUser.Name"></label>
+            <input asp-for="RegisterUser.Name"><br>
+            <span asp-validation-for="RegisterUser.Email"></span><br>
+            <label asp-for="RegisterUser.Email"></label>
+            <input asp-for="RegisterUser.Email"><br>
+            <span asp-validation-for="RegisterUser.Password"></span><br>
+            <label asp-for="RegisterUser.Password"></label>
+            <input asp-for="RegisterUser.Password"><br>
+            <span asp-validation-for="RegisterUser.Confirm"></span><br>
+            <label asp-for="RegisterUser.Confirm"></label>
+            <input asp-for="RegisterUser.Confirm"><br>
+            <input type="submit" value="Register" class="btn btn-primary">
+        </form>
+    </div>
+    <div class="login">
+        <h1>Login</h1>
+        <form asp-action="LoginUser" asp-controller="Home" method="post">
+            <span asp-validation-for="LoginUser.Email"></span><br>
+            <label asp-for="LoginUser.Email"></label>
+            <input asp-for="LoginUser.Email"><br>
+            <span asp-validation-for="LoginUser.Password"></span><br>
+            <label asp-for="LoginUser.Password"></label>
+            <input asp-for="LoginUser.Password"><br>
+            <input type="submit" value="Register" class="btn btn-primary">
+        </form>
+    </div>
+</div>

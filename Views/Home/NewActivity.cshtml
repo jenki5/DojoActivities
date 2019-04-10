@@ -1,0 +1,30 @@
+<partial name="NavPartials"/>
+<h1 class="header">Dojo Activity Center</h1>
+<a href="/home" class="header home">Home</a>
+<a href="/logout" class="header logout">Logout</a>
+<div class="container">
+    <h1>Create an Activity!</h1>
+    @model Activity
+    <form asp-action="CreateActivity" asp-controller="Home" method="post" class="form-inline">
+        <span asp-validation-for="Name"></span>
+        <label asp-for="Name"></label>
+        <input asp-for="Name"><br>
+        <span asp-validation-for="Date"></span>
+        <label asp-for="Date"></label>
+        <input asp-for="Date"><br>
+        <span asp-validation-for="Duration"></span>
+        <label asp-for="Duration"></label>
+        <input asp-for="Duration"><br>
+        <span asp-validation-for="Measure"></span>
+        <label asp-for="Measure"></label>
+        <Select asp-for="Measure">
+            <option value="Hours">Hours</option>
+            <option value="Minutes">Minutes</option>
+            <option value="Days">Days</option>
+        </Select><br>
+        <span asp-validation-for="Description"></span>
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" cols="30" rows="10"></textarea><br>
+        <input type="submit" value="Create Activity" class="btn btn-primary">
+    </form>
+</div>

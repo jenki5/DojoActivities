@@ -1,0 +1,21 @@
+<partial name="NavPartials"/>
+<h1 class="header">Dojo Activity Center</h1>
+<a href="/home" class="header home">Home</a>
+<a href="/logout" class="header logout">Logout</a>
+@model Activity
+<div class="container">
+    <h2>@Model.Name</h2>
+    <form action="/JoinActivity/@Model.ActivityId" class="join">
+        <input type="submit" value="Join Activity" class="btn btn-primary">
+    </form>
+    <h3>Event Coordinator: @Model.Creator.Name</h3>
+    <h3>Description:</h3>
+    <p>@Model.Description</p>
+    <h3>Participants:</h3>
+    <ul>
+        @foreach (var attendee in Model.Attendees)
+        {
+            <li>@attendee.User.Name</li>
+        }
+    </ul>
+</div>
